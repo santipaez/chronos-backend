@@ -1,29 +1,33 @@
-# Backend de EventZ
+# Chronos
 
-Este repositorio contiene el código fuente del backend de EventZ. 
+Chronos es una aplicación móvil que permite a los usuarios registrar y seguir sus horarios de clase, trabajo o cualquier otro evento. Este proyecto está construido con Spring Boot y React Native.
 
-EventZ es una aplicación móvil de gestión de eventos, el usuario va a poder realizar eventos e invitar a demás personas mediante la propia aplicación y/o a través de mensajes de WhatsApp.
+## Características futuras
 
-Futuras funcionalidades:
-- Poder crear, actualizar y borrar eventos.
-- Poder guardar el evento en Google Calendar.
-- Poder enviar invitaciones a través de WhatsApp.
+- **Registro de Horarios**: Los usuarios pueden registrar horarios para clases, trabajo, reuniones, etc.
+- **Gestión de Horarios**: Los usuarios pueden ver, editar y eliminar sus horarios registrados.
+- **Notificaciones**: Recordatorios automáticos antes de cada evento.
+- **Vista de Calendario**: Visualización intuitiva de los horarios en un calendario.
 
-La estructura de archivos y directorios es la siguiente:
+## Tecnologías Utilizadas
 
-- `src/main/java/com/gestioneventos/controller`: Este directorio contiene los controladores de Spring Boot para la API REST. Los controladores son responsables de manejar las solicitudes HTTP y enviar las respuestas correspondientes.
+- **Backend**: Spring Boot, Maven, JPA (Hibernate), PostgreSQL
+- **Frontend**: React Native
+- **Otros**: Postman para pruebas de API
 
-- `src/main/java/com/gestioneventos/model`: Este directorio contiene las clases de modelo de Spring Boot. Estas clases representan las entidades de la base de datos y se utilizan para mapear los datos de la base de datos a objetos Java y viceversa.
+## Requisitos Previos
 
-- `src/main/java/com/gestioneventos/repository`: Este directorio contiene las interfaces de repositorio de Spring Boot. Estas interfaces definen los métodos para acceder a los datos en la base de datos.
+Antes de comenzar, asegúrate de tener instalados los siguientes programas:
 
-- `src/main/java/com/gestioneventos/service`: Este directorio contiene las clases de servicio de Spring Boot. Estas clases implementan la lógica de negocio de la aplicación y utilizan los repositorios para acceder a los datos.
+- **Java 17** o superior
+- **Maven** para la gestión de dependencias y construcción del proyecto
+- **Node.js** y **npm** para el desarrollo de React Native
+- **PostgreSQL** como base de datos relacional
 
+## Instalación
 
-Para ejecutar el backend de la aplicación, asegúrese de tener instalado Java y Maven en su sistema. Luego, puede ejecutar el siguiente comando en la raíz del proyecto:
+### 1. Clonar el repositorio
 
-```
-mvn spring-boot:run
-```
-
-Esto iniciará el servidor de desarrollo de Spring Boot y la API REST estará disponible en `http://localhost:8080`.
+```bash
+git clone https://github.com/santtipaez/chronos-backend.git
+cd Chronos
