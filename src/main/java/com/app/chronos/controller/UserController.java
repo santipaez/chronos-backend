@@ -1,32 +1,44 @@
 package com.app.chronos.controller;
 
-import com.app.chronos.dao.UserDao;
 import com.app.chronos.models.User;
+import com.app.chronos.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("/user")
 public class UserController {
-
     @Autowired
-    private UserDao userDao;
+    private UserService userService;
 
-    @RequestMapping(value = "user/{id}")
-    public User getUser(@PathVariable int id) {
-        User user = new User();
-        user.setUsername("santipaez");
-        user.setEmail("santipaez@gmail.com");
-        user.setPassword("pass123");
-        user.setRole("admin");
-        return user;
+    @PostMapping
+    public void createUser(@RequestBody User user) {
+        userService.register(user);
     }
 
-    @RequestMapping(value = "users")
+    @GetMapping("/{id}")
+    public User getUser(@PathVariable Integer id) {
+        return userService.getUser(id);
+    }
+
+    @GetMapping
     public List<User> getUsers() {
-        return userDao.getUsers();
+        return userService.getUsers();
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteUser(@PathVariable Integer id) {
+        userService.delete(id);
+    }
+
+    @PutMapping("/{id}")
+    public void updateUserPassword(@PathVariable Integer id, @RequestBody String newPassword) {
+        User user = userService.getUser(id);
+        if (user != null) {
+            user.setPassword(newPassword);
+            userService.register(user);
+        }
     }
 }
