@@ -5,8 +5,6 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import java.time.Instant;
-import java.time.LocalTime;
 
 @Entity
 @Table(name = "schedules")
@@ -16,24 +14,25 @@ public class Schedule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter @Setter @Column(name = "id")
-    private Long id;
+    private Integer id;
 
-    @ManyToOne
-    @Getter @Setter @JoinColumn(name = "user_id")
-    private User user;
+    @Getter @Setter @Column(name = "day")
+    private String day;
 
-    @Getter @Setter @Column(name = "name", nullable = false)
+    @Getter @Setter @Column(name = "name")
     private String name;
 
-    @Getter @Setter @Column(name = "description", nullable = false)
+    @Getter @Setter @Column(name = "description")
     private String description;
 
-    @Getter @Setter @Column(name = "start_time", nullable = false)
-    private LocalTime startTime;
+    @Getter @Setter @Column(name = "start_time")
+    private String startTime;
 
-    @Getter @Setter @Column(name = "end_time", nullable = false)
-    private LocalTime endTime;
+    @Getter @Setter @Column(name = "end_time")
+    private String endTime;
 
-    @Getter @Setter @Column(name = "created_at", nullable = false, updatable = false)
-    private Instant createdAt = Instant.now();
+        // Método para validar el formato de la hora
+        public boolean isValidTimeFormat(String time) {
+            return time.matches("^([01]\\d|2[0-3]):([0-5]\\d)$");
+        }
 }
