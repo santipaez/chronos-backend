@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import lombok.EqualsAndHashCode;
-import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -17,7 +16,7 @@ public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter @Setter @Column(name = "id")
-    private Long id;
+    private Integer id;
 
     @ManyToOne
     @Getter @Setter @JoinColumn(name = "user_id")
@@ -41,6 +40,4 @@ public class Event {
     @Getter @Setter @Column(name = "location", nullable = false)
     private String location;
 
-    @Getter @Setter @Column(name = "created_at", nullable = false, updatable = false)
-    private Instant createdAt = Instant.now();
 }
