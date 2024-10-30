@@ -1,4 +1,4 @@
-package com.app.chronos.auth;
+package com.app.chronos.service;
 
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -6,7 +6,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.app.chronos.jwt.JwtService;
+import com.app.chronos.auth.AuthResponse;
+import com.app.chronos.auth.LoginRequest;
+import com.app.chronos.auth.RegisterRequest;
 import com.app.chronos.models.Role;
 import com.app.chronos.models.User;
 import com.app.chronos.repository.UserRepository;

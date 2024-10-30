@@ -1,10 +1,15 @@
-package com.app.chronos.auth;
+package com.app.chronos.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.app.chronos.auth.AuthResponse;
+import com.app.chronos.auth.LoginRequest;
+import com.app.chronos.auth.RegisterRequest;
+import com.app.chronos.service.AuthService;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

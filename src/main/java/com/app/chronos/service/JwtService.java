@@ -1,4 +1,4 @@
-package com.app.chronos.jwt;
+package com.app.chronos.service;
 
 import java.security.Key;
 import java.util.Date;
