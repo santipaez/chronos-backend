@@ -31,6 +31,11 @@ public class Schedule {
     @Getter @Setter @Column(name = "end_time")
     private String endTime;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    @Getter @Setter
+    private User user;
+
         // Método para validar el formato de la hora
         public boolean isValidTimeFormat(String time) {
             return time.matches("^([01]\\d|2[0-3]):([0-5]\\d)$");

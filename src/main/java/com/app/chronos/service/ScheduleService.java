@@ -30,8 +30,12 @@ public class ScheduleService {
         return scheduleRepository.findAll();
     }
 
-    public List<Schedule> getSchedulesByDay(String day) {
-        return scheduleRepository.findByDay(day);
+    public List<Schedule> getSchedulesByUser(String username) {
+        return scheduleRepository.findByUserUsername(username);
+    }
+
+    public List<Schedule> getSchedulesByDayAndUser(String day, String username) {
+        return scheduleRepository.findByDayAndUserUsername(day, username);
     }
 
     public void delete(Integer id) {

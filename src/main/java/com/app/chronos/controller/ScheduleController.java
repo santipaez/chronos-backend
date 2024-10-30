@@ -3,6 +3,8 @@ package com.app.chronos.controller;
 import com.app.chronos.models.Schedule;
 import com.app.chronos.service.ScheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,15 +24,15 @@ public class ScheduleController {
     public Schedule getSchedule(@PathVariable Integer id) {
         return scheduleService.getSchedule(id);
     }
-
+    
     @GetMapping
-    public List<Schedule> getSchedules() {
-        return scheduleService.getSchedules();
+    public List<Schedule> getSchedules(@AuthenticationPrincipal UserDetails userDetails) {
+        return scheduleService.getSchedulesByUser(userDetails.getUsername());
     }
 
     @GetMapping("/day/{day}")
-    public List<Schedule> getSchedulesByDay(@PathVariable String day) {
-        return scheduleService.getSchedulesByDay(day);
+    public List<Schedule> getSchedulesByDay(@PathVariable String day, @AuthenticationPrincipal UserDetails userDetails) {
+        return scheduleService.getSchedulesByDayAndUser(day, userDetails.getUsername());
     }
 
     @DeleteMapping("/{id}")
